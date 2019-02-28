@@ -31,6 +31,16 @@ public class TagUtils {
 		return intersect;
 	}
 	
+	public static int  getScore(Set<String> photo1, Set<String> photo2) {
+		int intersectSize = 0;
+		for (String string : photo1) {
+			if(photo2.contains(string)) {
+				intersectSize++;
+			}
+		}
+		return Math.min(intersectSize,Math.min(photo1.size()-intersectSize,photo2.size()-intersectSize));
+	}
+	
 	public static Set<String> difference(Set<String> photo1, Set<String> photo2){
 		Set<String> difference = new HashSet<String>();
 		for (String string : photo1) {
