@@ -19,5 +19,10 @@ public class HorizontalSlide extends Slide{
 		
 		return photo.tags ;
 	}
+	
+	@Override
+	public String toString() {
+		return Integer.toString(photo.id);
+	}
 
 }

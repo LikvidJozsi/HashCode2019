@@ -22,4 +22,9 @@ public class VerticalSlide extends Slide{
 		return tags;
 	}
 	
+	@Override
+	public String toString() {
+		return Integer.toString(photo1.id) + " " + Integer.toString(photo2.id);
+	}
+	
 }

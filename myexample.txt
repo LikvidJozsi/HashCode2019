@@ -1,0 +1,13 @@
+12
+H 3 cat beach sun
+V 2 selfie smile
+V 2 garden selfie
+H 2 ac bc
+H 3 cd bc sun
+V 2 ac fg
+V 2 fg selfie
+H 2 gh cat
+H 3 ij beach sun
+V 4 jk ij garden selfie
+V 2 ac garden
+H 2 gh cat

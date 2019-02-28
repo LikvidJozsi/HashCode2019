@@ -7,15 +7,18 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
-		algo("a_example.txt", "out_a");
+//		algo("a_example.txt", "out_a");
 //		algo("b_lovely_landscapes.txt", "out_b");
 //		algo("c_memorable_moments.txt", "out_c");
 //		algo("d_pet_pictures.txt", "out_d");
 //		algo("e_shiny_selfies.txt", "out_e");
+		
+		algo("myexample.txt", "out_myex");
 	}
 	
 	public static void algo(String inputFileName, String outputFileName) {
@@ -27,7 +30,7 @@ public class Main {
 		List<Slide> matchedVerticals = matchVerticalsToSlides(verticalPhotos);
 		List<Slide> unorderedSlides = createUnorderedSlides(horizontalSlides, matchedVerticals);
 		
-		System.out.println(unorderedSlides);
+		//unorderedSlides.forEach( (Slide s) -> System.out.println(s.toString()));
 	}
 
 
@@ -43,18 +46,39 @@ public class Main {
 	private static List<Slide> convertHorizontalToSlides(List<Photo> horizontalPhotos) {
 		List<Slide> slides = new ArrayList<Slide>();
 		horizontalPhotos.forEach( (Photo p) -> slides.add(new HorizontalSlide(p)) );
-		return null;
+		return slides;
 	}
 
 
 	private static List<Slide> matchVerticalsToSlides(List<Photo> verticalPhotos) {
 		List<Slide> verticalSlides = new ArrayList<Slide>();
 		
-		for(int i = 0; i < verticalSlides.size(); i++) {
+		List<Photo> initialLinked = new LinkedList<Photo>(verticalPhotos);
+		
+		
+		while(initialLinked.size() >= 2) {
+			int bestIndex = 1;
+			int min = TagUtils.intersect(initialLinked.get(0).tags, initialLinked.get(1).tags).size();
 			
+			for(int j = 2; j < initialLinked.size(); j++) {
+				int intersect = TagUtils.intersect(initialLinked.get(0).tags, initialLinked.get(j).tags).size();
+
+				if(intersect < min) {
+					bestIndex = j;
+					min = intersect;
+				}
+				
+				if(min == 0) break;
+			}
+			
+			verticalSlides.add(new VerticalSlide(initialLinked.get(0), initialLinked.get(bestIndex)));
+
+			initialLinked.remove(bestIndex);
+			initialLinked.remove(0);
 		}
 		
-		return convertHorizontalToSlides(verticalPhotos);
+		//return convertHorizontalToSlides(verticalPhotos);
+		return verticalSlides;
 	}
 
 
