@@ -26,6 +26,8 @@ public class Main {
 		List<Slide> horizontalSlides = convertHorizontalToSlides(horizontalPhotos);
 		List<Slide> matchedVerticals = matchVerticalsToSlides(verticalPhotos);
 		List<Slide> unorderedSlides = createUnorderedSlides(horizontalSlides, matchedVerticals);
+		
+		System.out.println(unorderedSlides);
 	}
 
 
@@ -46,8 +48,13 @@ public class Main {
 
 
 	private static List<Slide> matchVerticalsToSlides(List<Photo> verticalPhotos) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Slide> verticalSlides = new ArrayList<Slide>();
+		
+		for(int i = 0; i < verticalSlides.size(); i++) {
+			
+		}
+		
+		return convertHorizontalToSlides(verticalPhotos);
 	}
 
 
