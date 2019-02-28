@@ -21,6 +21,16 @@ public class TagUtils {
 		return union;
 	}
 	
+	public static Set<String> intersect(Set<String> photo1, Set<String> photo2){
+		Set<String> intersect = new HashSet<String>(Math.max(photo1.size(), photo2.size()));
+		for (String string : photo1) {
+			if(photo2.contains(string)) {
+				intersect.add(string);
+			}
+		}
+		return intersect;
+	}
+	
 	public static Set<String> difference(Set<String> photo1, Set<String> photo2){
 		Set<String> difference = new HashSet<String>();
 		for (String string : photo1) {
