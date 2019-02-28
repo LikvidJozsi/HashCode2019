@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,9 +33,7 @@ public class Main {
 		List<Slide> horizontalSlides = convertHorizontalToSlides(horizontalPhotos);
 		List<Slide> matchedVerticals = matchVerticalsToSlides(verticalPhotos);
 		List<Slide> unorderedSlides = createUnorderedSlides(horizontalSlides, matchedVerticals);
-		
-
-		
+				
 		output(outputFileName, unorderedSlides);
 		
 	}
