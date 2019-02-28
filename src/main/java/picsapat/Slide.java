@@ -21,12 +21,12 @@ public abstract class Slide {
 		return neighbour1 != null && neighbour2 != null;
 	}
 	
-	public void updateId(int newid) {
+	public void updateId(int newid, Slide from) {
 		this.id = newid;
-		if(neighbour1 != null)
-			 neighbour1.updateId(newid);
-		if(neighbour2 != null)
-			neighbour1.updateId(newid);
+		if(neighbour1 != null && neighbour1 != from)
+			 neighbour1.updateId(newid,this);
+		if(neighbour2 != null && neighbour1 != from)
+			neighbour1.updateId(newid,this);
 	}
 	
 	private void storeNeighbour(Slide slide) {
@@ -57,9 +57,9 @@ public abstract class Slide {
 			this.id = slide.id;
 		} else {
 			if(this.id < slide.id) {
-				slide.updateId(this.id);
+				slide.updateId(this.id,null);
 			}else {
-				this.updateId(slide.id);
+				this.updateId(slide.id,null);
 			}
 		}
 		storeNeighbour(slide);
