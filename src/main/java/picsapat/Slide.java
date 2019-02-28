@@ -30,9 +30,9 @@ public abstract class Slide {
 	}
 	
 	private void storeNeighbour(Slide slide) {
-		if(neighbour1 != null) {
+		if(neighbour1 == null) {
 			neighbour1 = slide;
-		}else if(neighbour2 != null) {
+		}else if(neighbour2 == null) {
 			neighbour2 = slide;
 		}else {
 			System.out.println("CSak ketto neighbour lehet");
@@ -40,7 +40,10 @@ public abstract class Slide {
 	}
 	
 	public void addNeighbour(Slide slide) {
-		if(slide.id == this.id)
+		if(this == slide)
+			System.out.println("gratzzz");
+		
+		if(slide.id != -1 && slide.id == this.id)
 			System.out.println("hat ezt elkurtad pityu");
 		
 		
@@ -97,9 +100,9 @@ public abstract class Slide {
 	
 	private void getPath(Slide from,List<Slide> path ) {
 		path.add(this);
-		if(neighbour1 != from)
+		if(neighbour1 != from && neighbour1 != null)
 			neighbour1.getPath(this,path);
-		if(neighbour2 != from)
+		if(neighbour2 != from && neighbour2 != null)
 			neighbour2.getPath(this,path);
 	}
 	

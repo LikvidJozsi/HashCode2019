@@ -31,7 +31,6 @@ public class Moho {
 		Slide end2 = null;
 		for (Slide slide : slides) {
 			if(slide.id == 0) {
-				System.out.println("asd");
 				end1 = slide.getEnd1();
 				end2 = slide.getEnd2();
 				break;
