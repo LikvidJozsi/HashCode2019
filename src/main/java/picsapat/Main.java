@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
-		List<Photo> photos= getInput(new File("a_example.txt"));
+		List<Photo> photos= getInput(new File("b_lovely_landscapes.txt"));
 		
 	}
 	
