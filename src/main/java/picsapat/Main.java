@@ -38,6 +38,7 @@ public class Main {
 				for (int j = 0; j < numOfTags; j++) {
 					photo.tags.add(line[2+j]);
 				}
+				photo.id = i;
 				photos.add(photo);
 			}
 			return photos;

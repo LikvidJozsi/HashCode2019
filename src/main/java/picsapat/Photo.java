@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Photo {
+	public int id;
 	public Orientation orientation;
 	public List<String> tags;
 	
