@@ -35,7 +35,7 @@ public class Main {
 		slides.addAll(horizontalSlides);
 		slides.addAll(matchedVerticals);
 		
-		return slides.
+		return slides;
 	}
 
 	private static List<Slide> convertHorizontalToSlides(List<Photo> horizontalPhotos) {
