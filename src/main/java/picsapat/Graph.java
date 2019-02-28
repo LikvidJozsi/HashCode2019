@@ -8,32 +8,35 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 
 public class Graph {
 	private List<List<Integer>> matrix;
+	private List<Slide> slides;
 	
 	public Graph(List<Slide> slides ) {
 		int numOfVertexes = slides.size();
-		matrix = new ArrayList<List<Integer>>(numOfVertexes);
-		for (int i = 0; i < numOfVertexes; i++) {
+		this.slides = slides;
+		//matrix = new ArrayList<List<Integer>>(numOfVertexes);
+		/*for (int i = 0; i < numOfVertexes; i++) {
 			List<Integer> row = new ArrayList<Integer>(i+1);
 			for (int j = 0; j < i; j++) {
 				row.add(calculateTransitionsScore(slides.get(i), slides.get(j)));
 			}
+			System.out.println("sor kész:" + i);
 			matrix.add(row);
-		}
+		}*/
 	}
 	
 	private Integer calculateTransitionsScore(Slide slide1, Slide slide2) {
 		Set<String> tagList1 = slide1.getTags();
 		Set<String> tagList2 = slide2.getTags();
-		return Math.min(TagUtils.intersect(tagList1, tagList2).size(), 
-				Math.min(TagUtils.difference(tagList1, tagList2).size(), TagUtils.difference(tagList2, tagList1).size()));
+		return TagUtils.getScore(tagList1, tagList2);
 	}
 	
 	public int getWeight(int i, int j) {
 		if(i == j)
 			return -1;
-		int row = Math.max(i, j);
+		return TagUtils.getScore(slides.get(i).getTags(), slides.get(j).getTags());
+		/*int row = Math.max(i, j);
 		int column = Math.min(i, j);
-		return matrix.get(row).get(column);
+		return matrix.get(row).get(column);*/
 	}
 	
 	public void print() {
