@@ -4,21 +4,24 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
-//		algo("a_example.txt", "out_a");
-//		algo("b_lovely_landscapes.txt", "out_b");
-//		algo("c_memorable_moments.txt", "out_c");
-//		algo("d_pet_pictures.txt", "out_d");
-//		algo("e_shiny_selfies.txt", "out_e");
+		algo("a_example.txt", "out_a.txt");
+		algo("b_lovely_landscapes.txt", "out_b.txt");
+		algo("c_memorable_moments.txt", "out_c.txt");
+		algo("d_pet_pictures.txt", "out_d.txt");
+		algo("e_shiny_selfies.txt", "out_e.txt");
 		
-		algo("myexample.txt", "out_myex");
+		//algo("myexample.txt", "out_myex.txt");
 	}
 	
 	public static void algo(String inputFileName, String outputFileName) {
@@ -30,7 +33,10 @@ public class Main {
 		List<Slide> matchedVerticals = matchVerticalsToSlides(verticalPhotos);
 		List<Slide> unorderedSlides = createUnorderedSlides(horizontalSlides, matchedVerticals);
 		
-		//unorderedSlides.forEach( (Slide s) -> System.out.println(s.toString()));
+
+		
+		output(outputFileName, unorderedSlides);
+		
 	}
 
 
@@ -128,5 +134,17 @@ public class Main {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static void output(String target, List<Slide> slides) {
+		try(PrintWriter pw = new PrintWriter(new File(target))) {
+			
+			pw.println(slides.size());
+			slides.forEach( (Slide s) -> pw.println(s.toString()));
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
