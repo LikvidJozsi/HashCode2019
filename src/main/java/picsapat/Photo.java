@@ -1,19 +1,21 @@
 package picsapat;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Photo {
 	public int id;
 	public Orientation orientation;
-	public List<String> tags;
+	public Set<String> tags;
 	
 	public Photo() {
-		this.tags = new ArrayList<String>();
+		this.tags = new HashSet<String>();
 	}
 	
 	public Photo(int numofTags) {
-		this.tags = new ArrayList<String>(numofTags);
+		this.tags = new HashSet<String>(numofTags);
 	}
 	
 	public Photo(Orientation orientation, int numOfTags) {
