@@ -14,7 +14,7 @@ public class VerticalSlide extends Slide{
 		super();
 		this.photo1 = photo1;
 		this.photo2 = photo2;
-		this.tags = TagUtils.union(photo1, photo2);
+		this.tags = TagUtils.union(photo1.tags, photo2.tags);
 	}
 	
 	@Override
