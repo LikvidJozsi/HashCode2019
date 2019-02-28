@@ -20,4 +20,15 @@ public class TagUtils {
 		}
 		return union;
 	}
+	
+	public static Set<String> difference(Set<String> photo1, Set<String> photo2){
+		Set<String> difference = new HashSet<String>();
+		for (String string : photo1) {
+			if(!photo2.contains(string)) {
+				difference.add(string);
+			}
+		}
+		return difference;
+		
+	}
 }
