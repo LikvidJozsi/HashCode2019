@@ -16,11 +16,11 @@ import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
-		algo("a_example.txt", "out_a.txt");
-		algo("b_lovely_landscapes.txt", "out_b.txt");
+//		algo("a_example.txt", "out_a.txt");
+//		algo("b_lovely_landscapes.txt", "out_b.txt");
 		algo("c_memorable_moments.txt", "out_c.txt");
-		algo("d_pet_pictures.txt", "out_d.txt");
-		algo("e_shiny_selfies.txt", "out_e.txt");
+//		algo("d_pet_pictures.txt", "out_d.txt");
+//		algo("e_shiny_selfies.txt", "out_e.txt");
 		
 		//algo("myexample.txt", "out_myex.txt");
 	}
@@ -34,7 +34,11 @@ public class Main {
 		List<Slide> matchedVerticals = matchVerticalsToSlides(verticalPhotos);
 		List<Slide> unorderedSlides = createUnorderedSlides(horizontalSlides, matchedVerticals);
 				
-		output(outputFileName, unorderedSlides);
+		Moho m = new Moho(unorderedSlides);
+		
+		List<Slide> finalSlides = m.getSlideShow();
+		
+		output(outputFileName, finalSlides);
 		
 	}
 

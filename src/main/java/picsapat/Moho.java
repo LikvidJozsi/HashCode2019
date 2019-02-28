@@ -19,6 +19,9 @@ public class Moho {
 		for (int i = 0; i < slides.size(); i++) {
 			if(!slides.get(i).hasTwoNeighbours()) {
 				Slide bestNeighbour = getBestNeighbour(i);
+				
+				if(bestNeighbour == null) break;
+				
 				slides.get(i).addNeighbour(bestNeighbour);
 			}
 			
@@ -28,6 +31,7 @@ public class Moho {
 		Slide end2 = null;
 		for (Slide slide : slides) {
 			if(slide.id == 0) {
+				System.out.println("asd");
 				end1 = slide.getEnd1();
 				end2 = slide.getEnd2();
 				break;
@@ -35,6 +39,7 @@ public class Moho {
 		}
 		
 		for (Slide slide : slides) {
+			//System.out.println("asd");
 			if(slide.id != 0) {
 				end1.addNeighbour(slide);
 				end2 = end1.getEnd2();
@@ -53,7 +58,8 @@ public class Moho {
 		Slide maxSlide = null;
 		Slide current = slides.get(index);
 		for (int i = 0; i < slides.size(); i++) {
-			if(!slides.get(i).hasTwoNeighbours() && slides.get(i).inSameTree(current)) {
+			if(!slides.get(i).hasTwoNeighbours() && !slides.get(i).inSameTree(current) && i != index) {				
+	
 				int weight = graph.getWeight(index, i);
 				if(weight > maxScore) {
 					maxSlide = slides.get(i);
