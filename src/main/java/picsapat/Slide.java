@@ -22,11 +22,12 @@ public abstract class Slide {
 	}
 	
 	public void updateId(int newid, Slide from) {
+
 		this.id = newid;
 		if(neighbour1 != null && neighbour1 != from)
 			 neighbour1.updateId(newid,this);
-		if(neighbour2 != null && neighbour1 != from)
-			neighbour1.updateId(newid,this);
+		if(neighbour2 != null && neighbour2 != from)
+			neighbour2.updateId(newid,this);
 	}
 	
 	private void storeNeighbour(Slide slide) {

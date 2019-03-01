@@ -1,6 +1,9 @@
 package picsapat;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 public class Moho {
@@ -14,8 +17,17 @@ public class Moho {
 	
 	
 	public List<Slide> getSlideShow(){
-		
+		System.out.println("phase 1");
 		//phase 1
+		
+		Collections.sort(slides, new Comparator<Slide>() {
+
+			@Override
+			public int compare(Slide o1, Slide o2) {
+				return Integer.compare(o2.getTags().size(),o1.getTags().size());
+			}
+		});
+		
 		for (int i = 0; i < slides.size(); i++) {
 			if(!slides.get(i).hasTwoNeighbours()) {
 				Slide bestNeighbour = getBestNeighbour(i);
@@ -23,9 +35,12 @@ public class Moho {
 				if(bestNeighbour == null) break;
 				
 				slides.get(i).addNeighbour(bestNeighbour);
+				if(i%1000 == 0)
+					System.out.println("slide done" + i);
 			}
 			
 		}
+		System.out.println("phase 2");
 		//phase 2
 		Slide end1 = null;
 		Slide end2 = null;
@@ -39,7 +54,7 @@ public class Moho {
 		
 		for (Slide slide : slides) {
 			//System.out.println("asd");
-			if(slide.id != 0) {
+			if(slide.id != 0 && !slide.hasTwoNeighbours()) {
 				end1.addNeighbour(slide);
 				end2 = end1.getEnd2();
 				end1 = end1.getEnd1();
@@ -64,6 +79,9 @@ public class Moho {
 					maxSlide = slides.get(i);
 					maxScore = weight;
 				}
+				
+				if(maxScore >= Math.max((current.getTags().size()/4.2),1))
+					break;
 			}
 		
 		}
