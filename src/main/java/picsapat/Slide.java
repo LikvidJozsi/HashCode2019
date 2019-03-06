@@ -14,7 +14,7 @@ public abstract class Slide {
 	public Slide neighbour1 = null;
 	public Slide neighbour2 = null;
 	
-	public abstract Set<String> getTags();
+	public abstract Tag[] getTags();
 	
 	
 	public boolean hasTwoNeighbours() {

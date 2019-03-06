@@ -2,13 +2,14 @@ package picsapat;
 
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 
 public class VerticalSlide extends Slide{
 	public Photo photo1;
 	public Photo photo2;
-	Set<String> tags;
+	Tag[] tags;
 	
 	public VerticalSlide(Photo photo1, Photo photo2) {
 		super();
@@ -18,7 +19,7 @@ public class VerticalSlide extends Slide{
 	}
 	
 	@Override
-	public Set<String> getTags() {
+	public Tag[] getTags() {
 		return tags;
 	}
 	

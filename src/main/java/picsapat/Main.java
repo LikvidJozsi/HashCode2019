@@ -17,8 +17,8 @@ import java.util.List;
 public class Main {
 	public static void main(String[] args) {
 //		algo("a_example.txt", "out_a.txt");
-//		algo("b_lovely_landscapes.txt", "out_b.txt");
-		algo("c_memorable_moments.txt", "out_c.txt");
+		algo("b_lovely_landscapes.txt", "out_b.txt");
+//		algo("c_memorable_moments.txt", "out_c.txt");
 //		algo("d_pet_pictures.txt", "out_d.txt");
 //		algo("e_shiny_selfies.txt", "out_e.txt");
 		
@@ -123,9 +123,10 @@ public class Main {
 				}
 				
 				for (int j = 0; j < numOfTags; j++) {
-					photo.tags.add(line[2+j]);
+					photo.tags[j] = new Tag(line[2+j]);
 				}
 				photo.id = i;
+				photo.sort();
 				photos.add(photo);
 			}
 			return photos;

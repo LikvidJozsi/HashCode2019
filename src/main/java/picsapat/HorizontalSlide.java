@@ -15,7 +15,7 @@ public class HorizontalSlide extends Slide{
 	
 	
 	@Override
-	public Set<String> getTags() {
+	public Tag[] getTags() {
 		
 		return photo.tags ;
 	}

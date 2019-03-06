@@ -24,11 +24,6 @@ public class Graph {
 		}*/
 	}
 	
-	private Integer calculateTransitionsScore(Slide slide1, Slide slide2) {
-		Set<String> tagList1 = slide1.getTags();
-		Set<String> tagList2 = slide2.getTags();
-		return TagUtils.getScore(tagList1, tagList2);
-	}
 	
 	public int getWeight(int i, int j) {
 		if(i == j)
